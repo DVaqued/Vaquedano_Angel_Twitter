@@ -13,19 +13,22 @@ public class usuario {
     Estado de cuenta
     Seguidores/Seguidos
      */
-    public static usuario[] usuarios = new usuario[500];
-    String usuario, nombre, contraseña, genero;
+    public static usuario[] usuarios = new usuario[200];
+    String usuario, nombre, contraseña;
+    char genero;
     int edad;
     Date fecha = new Date();
     boolean estadoCuenta;
+    public static String usuarioSesion = null;
 
     String[] seguidores;
     String[] seguidos;
-    
-    public usuario(){
+
+    public usuario() {
+
     }
-    
-    public usuario(String usuario, String nombre, String contraseña, String genero, int edad, String[] seguidores, String[] seguidos, boolean estadoCuenta) {
+
+    public usuario(String usuario, String nombre, String contraseña, char genero, int edad, String[] seguidores, String[] seguidos, boolean estadoCuenta) {
         this.usuario = usuario;
         this.nombre = nombre;
         this.contraseña = contraseña;
@@ -33,7 +36,7 @@ public class usuario {
         this.edad = edad;
         this.seguidores = seguidores;
         this.seguidos = seguidos;
-        this.estadoCuenta = estadoCuenta;
+        this.estadoCuenta = true;
     }
 
     private usuario usersSearch(String userName) {
@@ -45,7 +48,7 @@ public class usuario {
         return null;
     }
 
-    public boolean creacionCuenta(String usuario, String nombre, String contraseña, String genero, int edad, String[] seguidores, String[] seguidos, boolean estadoCuenta) {
+    public boolean creacionCuenta(String usuario, String nombre, String contraseña, char genero, int edad, String[] seguidores, String[] seguidos, boolean estadoCuenta) {
         if (usersSearch(usuario) == null) {
             for (int contadorUsers = 0; contadorUsers < usuarios.length; contadorUsers++) {
                 if (usuarios[contadorUsers] == null) {
@@ -55,5 +58,25 @@ public class usuario {
             }
         }
         return false;
+    }
+
+    public boolean verificacionCuenta(String usuario, String contraseña) {
+        usuario u = usersSearch(usuario);
+        if (u != null && u.contraseña.equals(contraseña)) {
+            return true;
+        }
+        return false;
+    }
+
+    public void setUsuarioSesion(String user) {
+        usuarioSesion = user;
+    }
+
+    public void resetCerrarSesion() {
+        usuarioSesion = null;
+    }
+
+    public String getUsuarioSesion() {
+        return usuarioSesion;
     }
 }

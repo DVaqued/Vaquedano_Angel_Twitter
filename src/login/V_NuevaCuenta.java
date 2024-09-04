@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package login;
+
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author carlo
@@ -39,11 +41,13 @@ public class V_NuevaCuenta extends javax.swing.JFrame {
         txt_password = new javax.swing.JPasswordField();
         btn_CuentaCreada = new javax.swing.JButton();
         btn_Volver = new javax.swing.JButton();
-        txt_Genero = new javax.swing.JTextField();
+        generoBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        cuenta_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_twitter/twitter.png"))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        cuenta_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_twitter/twitter-removebg-preview (1).png"))); // NOI18N
 
         jLabel1.setText("Nombre:");
 
@@ -55,7 +59,13 @@ public class V_NuevaCuenta extends javax.swing.JFrame {
 
         jLabel2.setText("Genero:");
 
-        jLabel3.setText("U:suario");
+        jLabel3.setText("Usuario:");
+
+        txt_Username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_UsernameActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Contraseña:");
 
@@ -91,44 +101,12 @@ public class V_NuevaCuenta extends javax.swing.JFrame {
             }
         });
 
+        generoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F"}));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cuenta_logo)
-                            .addComponent(jLabel1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(58, 58, 58)
-                                        .addComponent(txt_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txt_Genero, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(130, 130, 130))))))
-                .addContainerGap(31, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,13 +116,47 @@ public class V_NuevaCuenta extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_CuentaCreada)
                         .addGap(105, 105, 105))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(45, 45, 45)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txt_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_Edad, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(generoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(98, 98, 98))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cuenta_logo)
+                            .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cuenta_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(19, 19, 19)
+                .addComponent(cuenta_logo)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -158,8 +170,8 @@ public class V_NuevaCuenta extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Genero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(generoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -168,7 +180,7 @@ public class V_NuevaCuenta extends javax.swing.JFrame {
                 .addComponent(btn_CuentaCreada)
                 .addGap(27, 27, 27)
                 .addComponent(btn_Volver)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,48 +200,50 @@ public class V_NuevaCuenta extends javax.swing.JFrame {
     private void txt_EdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_EdadKeyTyped
         int key = evt.getKeyChar();
         //                     0          9  segun la tabla ASCII
-        boolean numeros= key >=48 && key<=57;
-        
-        if(!numeros){
-        evt.consume();
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!numeros) {
+            evt.consume();
         }
     }//GEN-LAST:event_txt_EdadKeyTyped
 
     private void btn_CuentaCreadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CuentaCreadaActionPerformed
-       if(txt_Nombre.getText().equals("")||txt_Genero.getText().equals("")||txt_Username.getText().equals("")||txt_Edad.getText().equals("")||txt_password.getText().equals("")){
-       JOptionPane.showMessageDialog(null,"Error! Debe llenar todo los campos.");
-       }
-       String user=txt_Username.getText();
-       String nombre=txt_Nombre.getText();
-       String contraseña=txt_password.getText();
-       String genero=txt_Genero.getText();
-       String edadString=txt_Edad.getText();
-       int edad= Integer.parseInt(edadString);
-       
-       
-       String[] seguidores=new String[100];
-       String[] seguidos=new String[100];
-       
-       boolean estadoCuenta=true;
-       
-       usuario usuarioA=new usuario();
-       
-       boolean verificarCreacion=usuarioA.creacionCuenta(user,nombre,contraseña,genero,edad,seguidores,seguidos, estadoCuenta);
-       if (verificarCreacion==true){
-           JOptionPane.showMessageDialog(null, "Su cuenta se ha creado exitosamente.");
-           Inicio i=new Inicio();
-           i.setVisible(true);
-           this.dispose();
-       }else{
-           JOptionPane.showMessageDialog(null, "Su cuenta no se ha podido crear.");
-       }
-       
-       
+        if (txt_Nombre.getText().equals("")|| txt_Username.getText().equals("") || txt_Edad.getText().equals("") || txt_password.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Error! Debe llenar todo los campos.");
+        } else {
+            String user = txt_Username.getText();
+            String nombre = txt_Nombre.getText();
+            String contraseña = txt_password.getText();
+            String generoTemp = (String) generoBox.getSelectedItem();
+            char genero=generoTemp.charAt(0);
+            String edadString = txt_Edad.getText();
+            int edad = Integer.parseInt(edadString);
+
+            String[] seguidores = new String[100];
+            String[] seguidos = new String[100];
+
+            boolean estadoCuenta = true;
+
+            usuario usuarioA = new usuario();            
+
+            boolean verificarCreacion = usuarioA.creacionCuenta(user, nombre, contraseña, genero, edad, seguidores, seguidos, estadoCuenta);
+            if (verificarCreacion == true) {
+                JOptionPane.showMessageDialog(null, "Su cuenta se ha creado exitosamente.");
+                InicioSesion i = new InicioSesion();
+                usuario u=new usuario();
+                u.setUsuarioSesion(user);
+                
+                i.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Su cuenta no se ha podido crear.");
+            }
+        }
     }//GEN-LAST:event_btn_CuentaCreadaActionPerformed
 
     private void btn_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VolverActionPerformed
-      
-      dispose();
+
+        dispose();
     }//GEN-LAST:event_btn_VolverActionPerformed
 
     private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
@@ -240,12 +254,16 @@ public class V_NuevaCuenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_passwordActionPerformed
 
-  
+    private void txt_UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_UsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_UsernameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_CuentaCreada;
     private javax.swing.JButton btn_Volver;
     private javax.swing.JLabel cuenta_logo;
+    private javax.swing.JComboBox<String> generoBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -253,7 +271,6 @@ public class V_NuevaCuenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_Edad;
-    private javax.swing.JTextField txt_Genero;
     private javax.swing.JTextField txt_Nombre;
     private javax.swing.JTextField txt_Username;
     private javax.swing.JPasswordField txt_password;
