@@ -20,16 +20,16 @@ public class InicioTweets extends javax.swing.JFrame {
     usuario u = new usuario();
     private ImageIcon imagenMasculinaI = new ImageIcon(getClass().getResource("/imagenes/ImagenMI.jpeg"));
     private ImageIcon imagenFemeninaI = new ImageIcon(getClass().getResource("/imagenes/ImagenFI.jpeg"));
-    
+
     public InicioTweets() {
         initComponents();
 
         String[] tweetsFiltrados = t.tweetsFiltrados(u.getSeguidos(u.getUsuarioSesion()), u.getUsuarioSesion());
         listaTweets.setListData(tweetsFiltrados);
-        String usuarioA= u.getUsuarioSesion();
-        usuario usuarioActual=u.usersSearch(usuarioA);
-        
-        if (usuarioActual.genero== 'M') {
+        String usuarioA = u.getUsuarioSesion();
+        usuario usuarioActual = u.usersSearch(usuarioA);
+
+        if (usuarioActual.genero == 'M') {
             pfpI.setIcon(imagenMasculinaI);
         } else {
             pfpI.setIcon(imagenFemeninaI);
@@ -234,54 +234,56 @@ public class InicioTweets extends javax.swing.JFrame {
     private void buscarMencionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMencionesActionPerformed
         // TODO add your handling code here:
         textoTweet.setText("");
-        misMenciones mM=new misMenciones();
+        misMenciones mM = new misMenciones();
         mM.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buscarMencionesActionPerformed
 
     private void publicarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publicarBotonActionPerformed
         // TODO add your handling code here:
-        //try{
-        String contenidoTweet = textoTweet.getText();
+        try {
+            String contenidoTweet = textoTweet.getText();
+            if (!contenidoTweet.isEmpty()) {
+                if (contenidoTweet.length() > 140) {
+                    JOptionPane.showMessageDialog(null, "Se excede la cantidad máxima de 140 caracteres.");
+                } else {
+                    boolean exito = t.publicarTweetUsuario(u.getUsuarioSesion(), contenidoTweet);
+                    if (exito) {
+                        JOptionPane.showMessageDialog(null, "El tweet ha sido publicado exitosamente!");
+                        String usuarioActual = u.getUsuarioSesion();
 
-        if (!contenidoTweet.isEmpty()) {
-            boolean exito = t.publicarTweetUsuario(u.getUsuarioSesion(), contenidoTweet);
-            if (exito) {
-                JOptionPane.showMessageDialog(null, "El tweet ha sido publicado exitosamente!");
-                String usuarioActual = u.getUsuarioSesion();
-                
-                String[] seguidos = u.getSeguidos(usuarioActual);
-                String[] tweetsFiltrados = t.tweetsFiltrados(seguidos, usuarioActual);
+                        String[] seguidos = u.getSeguidos(usuarioActual);
+                        String[] tweetsFiltrados = t.tweetsFiltrados(seguidos, usuarioActual);
 
-                listaTweets.setListData(tweetsFiltrados);
+                        listaTweets.setListData(tweetsFiltrados);
 
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se pudo publicar el tweet!");
+                    }
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "No se pudo publicar el tweet!");
+                JOptionPane.showMessageDialog(null, "El espacio está vacío!");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "El espacio está vacío!");
-        }
-        //}catch(Exception e){
-        //    JOptionPane.showMessageDialog(null, "Ingrese los datos adecuados para cada espacio.");
-        //}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese los datos adecuados para cada espacio.");
     }//GEN-LAST:event_publicarBotonActionPerformed
-
+    }
     private void miPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miPerfilActionPerformed
         // TODO add your handling code here:
-        //try{
-        u.asignarUsuario(u.getUsuarioSesion());
-        u.asignarNombre(u.getUsuarioSesion());
-        u.asignarEdad(u.getUsuarioSesion());
-        u.asignarGenero(u.getUsuarioSesion());
-        u.asignarCantidadSeguidores(u.getUsuarioSesion());
-        u.asignarCantidadSeguidos(u.getUsuarioSesion());
-        u.asignarFecha(u.getUsuarioSesion());
-        miPerfil mP = new miPerfil();
-        mP.setVisible(true);
-        this.dispose();
-        //}catch(Exception e){
-        //    JOptionPane.showMessageDialog(null, "Error!");
-       // }
+        try {
+            u.asignarUsuario(u.getUsuarioSesion());
+            u.asignarNombre(u.getUsuarioSesion());
+            u.asignarEdad(u.getUsuarioSesion());
+            u.asignarGenero(u.getUsuarioSesion());
+            u.asignarCantidadSeguidores(u.getUsuarioSesion());
+            u.asignarCantidadSeguidos(u.getUsuarioSesion());
+            u.asignarFecha(u.getUsuarioSesion());
+            miPerfil mP = new miPerfil();
+            mP.setVisible(true);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error!");
+        }
     }//GEN-LAST:event_miPerfilActionPerformed
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
@@ -294,23 +296,22 @@ public class InicioTweets extends javax.swing.JFrame {
 
     private void buscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarUsuarioActionPerformed
         // TODO add your handling code here:
-        try{
-        busquedaUsuariosVentana bUV = new busquedaUsuariosVentana();
-        bUV.setVisible(true);
-        this.dispose();
-        
-        }catch(Exception e){
+        try {
+            busquedaUsuariosVentana bUV = new busquedaUsuariosVentana();
+            bUV.setVisible(true);
+            this.dispose();
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error!");
         }
     }//GEN-LAST:event_buscarUsuarioActionPerformed
 
     private void buscarHashtagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarHashtagActionPerformed
         // TODO add your handling code here:
-        buscarHashtags bH=new buscarHashtags();
+        buscarHashtags bH = new buscarHashtags();
         bH.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buscarHashtagActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
