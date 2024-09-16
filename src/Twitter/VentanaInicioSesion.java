@@ -2,24 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package login;
+package Twitter;
 
-import java.util.Set;
-import login.V_NuevaCuenta;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author carlo
  */
-public class VentanaIncioSesion extends javax.swing.JFrame {
+public class VentanaInicioSesion extends javax.swing.JFrame {
 
     /**
      * Creates new form ventana
      */
-    public VentanaIncioSesion() {
+    public VentanaInicioSesion() {
         initComponents();
     }
+    usuario u = new usuario();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,31 +33,34 @@ public class VentanaIncioSesion extends javax.swing.JFrame {
         lbusuario = new javax.swing.JLabel();
         lbcontraseña = new javax.swing.JLabel();
         textoUsuario = new javax.swing.JTextField();
-        logo = new javax.swing.JLabel();
         boton_login = new javax.swing.JButton();
         textopassword = new javax.swing.JPasswordField();
         btn_cuentaNueva = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         lbusuario.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        lbusuario.setForeground(new java.awt.Color(0, 153, 255));
         lbusuario.setText("Usuario:");
 
         lbcontraseña.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        lbcontraseña.setForeground(new java.awt.Color(0, 153, 255));
         lbcontraseña.setText("Contraseña:");
 
+        textoUsuario.setBackground(new java.awt.Color(204, 204, 204));
+        textoUsuario.setForeground(new java.awt.Color(0, 0, 0));
         textoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoUsuarioActionPerformed(evt);
             }
         });
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_twitter/twitter-removebg-preview (1).png"))); // NOI18N
-
-        boton_login.setBackground(new java.awt.Color(88, 167, 246));
+        boton_login.setBackground(new java.awt.Color(0, 153, 255));
         boton_login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        boton_login.setForeground(new java.awt.Color(0, 0, 0));
         boton_login.setText("Log in");
         boton_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,108 +68,118 @@ public class VentanaIncioSesion extends javax.swing.JFrame {
             }
         });
 
+        textopassword.setBackground(new java.awt.Color(204, 204, 204));
+        textopassword.setForeground(new java.awt.Color(0, 0, 0));
         textopassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textopasswordActionPerformed(evt);
             }
         });
 
-        btn_cuentaNueva.setBackground(new java.awt.Color(108, 176, 245));
+        btn_cuentaNueva.setBackground(new java.awt.Color(0, 153, 255));
         btn_cuentaNueva.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        btn_cuentaNueva.setForeground(new java.awt.Color(0, 0, 0));
         btn_cuentaNueva.setText("No tienes cuenta?");
         btn_cuentaNueva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_cuentaNuevaMouseClicked(evt);
             }
         });
+        btn_cuentaNueva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cuentaNuevaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/twitter-removebg-preview (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbcontraseña)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(textopassword, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbusuario)
+                            .addComponent(lbcontraseña)
+                            .addComponent(textopassword, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(boton_login))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
                         .addComponent(btn_cuentaNueva))
-                    .addComponent(textoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbusuario))
-                .addContainerGap(125, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(boton_login)
-                .addGap(161, 161, 161))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbusuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(textoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(lbcontraseña)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(textopassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(boton_login)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_cuentaNueva)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_cuentaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_loginActionPerformed
-        if (textoUsuario.getText().equals("") || textopassword.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Error! Debe de llenar todos los campos");
-        } else {
-            String usuario = textoUsuario.getText();
-            String contraseña = textopassword.getText();
-
-            usuario u = new usuario();
-            boolean verificar = u.verificacionCuenta(usuario, contraseña);
-            if (verificar == true) {
-                JOptionPane.showMessageDialog(null, "Se ha iniciado sesion correctamente.");
-
-                InicioSesion i = new InicioSesion();
-                u.setUsuarioSesion(usuario);
-                i.setVisible(true);
-                this.dispose();
+        try {
+            if (textoUsuario.getText().equals("") || textopassword.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Error! Debe de llenar todos los campos");
             } else {
-                JOptionPane.showMessageDialog(null, "No se ha podido inciar sesion, intente de nuevo.");
-            }
+                String usuario = textoUsuario.getText();
+                String contraseña = textopassword.getText();
+                boolean verificar = u.verificacionCuenta(usuario, contraseña);
+                if (verificar == true) {
+                        u.setUsuarioSesion(usuario);
+                        JOptionPane.showMessageDialog(null, "Se ha iniciado sesion correctamente.");
+                        InicioTweets i = new InicioTweets();
+
+                        i.setVisible(true);
+                        this.dispose();
+                        
+                    
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se ha podido inciar sesion, intente de nuevo.");
+                    }
+                }
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ingrese los datos adecuados para cada espacio.");
         }
     }//GEN-LAST:event_boton_loginActionPerformed
 
     private void btn_cuentaNuevaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cuentaNuevaMouseClicked
-        V_NuevaCuenta V_NC = new V_NuevaCuenta();
+        crearCuenta V_NC = new crearCuenta();
         V_NC.setVisible(true);
-        V_NC.setLocationRelativeTo(null);
-        V_NC.setDefaultCloseOperation(2);
-
         this.dispose();
     }//GEN-LAST:event_btn_cuentaNuevaMouseClicked
 
@@ -179,13 +191,17 @@ public class VentanaIncioSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoUsuarioActionPerformed
 
+    private void btn_cuentaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cuentaNuevaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cuentaNuevaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton boton_login;
     private javax.swing.JButton btn_cuentaNueva;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbcontraseña;
     private javax.swing.JLabel lbusuario;
-    private javax.swing.JLabel logo;
     private javax.swing.JTextField textoUsuario;
     private javax.swing.JPasswordField textopassword;
     // End of variables declaration//GEN-END:variables
